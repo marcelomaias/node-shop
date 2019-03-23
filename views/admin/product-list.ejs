@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %>
+  </head>
+  <body>
+    <header>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+
+    <main>
+      <% if (prods.length > 0) { %>
+      <div class="product-grid">
+        <% for ( let prod of prods) { %>
+        <div>
+          <% if (prod.imgUrl) { %>
+            <img src="<%= prod.imgUrl %>" alt="Album cover" />
+          <% } %>
+          <h4><%= prod.title %></h4>
+          <p><%= prod.description %></p>
+          <div>$<%= prod.price %></div>
+          <a href="/admin/edit-product/<%= prod.id %>?editing=true" class="btn">Edit</a>
+          <form action="/admin/delete-product" method="POST">
+              <button class="btn" type="submit">Delete</button>
+              <input type="hidden" value="<%= prod.id %>" name="productId">
+          </form>
+        </div>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h2>No products found.</h2>
+      <% } %>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

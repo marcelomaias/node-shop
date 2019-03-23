@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+  </head>
+  <body>
+    <header>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+
+    <main>
+      <% if (prods.length > 0) { %>
+      <div class="product-grid">
+        <% for ( let prod of prods) { %>
+        <div>
+          <% if (prod.imgUrl) { %>
+            <img src="<%= prod.imgUrl %>" alt="Album cover" />
+            <% } %>
+          <h4><%= prod.title %></h4>
+          <span>$<%= prod.price %></span>
+          <a href="/shop/product/<%= prod.id %>" class="btn">See More</a>
+          <%- include('../partials/add-to-cart.ejs', { prod: prod }) %>
+        </div>
+        
+        <% } %>
+      </div>
+      <% } else { %>
+      <h2>No products found.</h2>
+      <% } %>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

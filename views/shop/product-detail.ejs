@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+  </head>
+  <body>
+    <header>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+
+    <main>
+      
+
+      <div>
+          <h1><%= prod.title %></h1>
+          <% if (prod.imgUrl) { %>
+          <img src="<%= prod.imgUrl %>" alt="Album cover" />
+          <% } %>
+          <p><%= prod.description %></p>
+          <span>$<%= prod.price %></span>
+          <%- include('../partials/add-to-cart.ejs') %>
+        </div>
+        
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
